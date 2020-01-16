@@ -19,6 +19,7 @@ namespace Recipes.Droid
 
             base.OnCreate(savedInstanceState);
 
+            global::Xamarin.Forms.Forms.SetFlags(new[] { "CollectionView_Experimental", "IndicatorView_Experimental" });
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             XF.Material.Droid.Material.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

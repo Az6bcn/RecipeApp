@@ -37,7 +37,7 @@ namespace Recipes.Views
             var selectedItem = (Recipe)_sender.SelectedItem;
 
             // navigate to next details page
-            await Navigation.PushAsync(new NavigationPage(new RecipeDetailPage(new RecipeDetailsViewModel(selectedItem))), true);
+            await Navigation.PushAsync((new RecipeDetailPage(new RecipeDetailsViewModel(selectedItem))), true);
 
 
         }
