@@ -22,8 +22,15 @@
     <None Remove="test_xamarin.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Remove="Views\EditRecipePage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="test_xamarin.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\EditRecipePage.cs" />
+    <Compile Remove="Views\EditRecipePage.xaml.cs" />
   </ItemGroup>
 </Project>

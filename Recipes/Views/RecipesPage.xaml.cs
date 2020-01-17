@@ -44,8 +44,7 @@ namespace Recipes.Views
 
         public async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {
-            await MaterialDialog.Instance.AlertAsync(message: "This is an alert dialog",
-                                    title: "Alert Dialog");
+            await Navigation.PushAsync(new AddRecipePage());
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" x:Class="Recipes.Views.AddEditPage" Title="Edit Recipe">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="40" Padding="0,110,0,0" Margin="15" HorizontalOptions="Center">
+        <material:MaterialTextField Placeholder="Name" ErrorText="Error Text" Text="{Binding Recipe.Name}" ShouldAnimateUnderline="True" AlwaysShowUnderline="True" MaxLength="50"/>
+
+        <material:MaterialTextField Placeholder="Ingrident" ErrorText="Error Text" Text="{Binding Recipe.Ingrident}" ShouldAnimateUnderline="True" AlwaysShowUnderline="True" />
+
+        <material:MaterialTextField Placeholder="Direction" ErrorText="Error Text" Text="{Binding Recipe.Direction}" ShouldAnimateUnderline="True" AlwaysShowUnderline="True" MaxLength="500" />
+
+
+        <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceEvenly" Margin="0,30,0,0">
+
+        <!--Buttons-->
+        <material:MaterialButton BackgroundColor="#0398fc" HorizontalOptions="Center" Text="Save" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8"/>
+
+        <material:MaterialButton BackgroundColor="#F44336" HorizontalOptions="Center" Text="Cancel" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8"/>
+    </FlexLayout>
+    </StackLayout>
+
+    
+</ContentPage>

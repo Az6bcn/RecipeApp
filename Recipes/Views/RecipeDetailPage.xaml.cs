@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using Recipes.Models;
 using Recipes.ViewModels;
 using Xamarin.Forms;
@@ -22,8 +23,16 @@ namespace Recipes.Views
             BindingContext = _recipeDetailsViewModel;
         }
 
-        void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        public async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {
+            if (_recipeDetailsViewModel.RecipeReceived == null) return;
+
+            await Navigation.PushAsync(new
+                AddEditPage(new AddEditRecipeViewModel
+                {
+                    RecipeToEdit = _recipeDetailsViewModel.RecipeReceived
+                })
+            ); ;
         }
 
     }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" mc:Ignorable="d" x:Class="Recipes.Views.RecipesPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material" mc:Ignorable="d" x:Class="Recipes.Views.RecipesPage" x:Name="BrowseItemsPage" Title="Recipes">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
