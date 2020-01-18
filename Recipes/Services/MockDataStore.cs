@@ -1,6 +1,7 @@
 ﻿    using System;
     using System.Collections.Generic;
-    using System.Linq;
+using System.Collections.ObjectModel;
+using System.Linq;
     using System.Threading.Tasks;
     using Recipes.Models;
 
@@ -8,11 +9,11 @@
     {
         public class MockDataStore : IDataStore<Recipe>
         {
-            readonly List<Recipe> Recipes;
+            readonly ObservableCollection<Recipe> Recipes;
 
             public MockDataStore()
             {
-                Recipes = new List<Recipe>()
+                Recipes = new ObservableCollection<Recipe>()
                 {
                         new Recipe { Id = Guid.NewGuid(), Name = "First Recipe", Description="This is an Recipe description.", Ingrident = "Love and some secret stuff", Direction ="Giving away my family's kitchen secret in this App, sahk kjkjkjs sKksjs kSS dadkakd  andkand dad kad adnka aka ana anakn a ja dj ana ajdja ja dja d ajdadj knjdk na djad jadj dja dja dja jd ajd aj ak ka dka dka  akda dka dka kda kd akd akd ak dka dka dka dka dka dka dka dka dka kd akd akdka dka dka dk akd akd ak dka dka dka dka kd akd akd ka dka dka ka dka da kd akd akd ak dak dka dka dka dka dkada",
                             Images = new List<Image> {
@@ -54,9 +55,9 @@
                 };
             }
 
-            public async Task<bool> AddRecipeAsync(Recipe Recipe)
+            public async Task<bool> AddRecipeAsync(Recipe recipe)
             {
-                Recipes.Add(Recipe);
+                Recipes.Add(recipe);
 
                 return await Task.FromResult(true);
             }
@@ -75,7 +76,9 @@
 
             public async Task<bool> DeleteRecipeAsync(Guid id)
             {
-                var oldRecipe = Recipes.Where((Recipe arg) => arg.Id == id).FirstOrDefault();
+                var oldRecipe = Recipes
+                                .Where((Recipe arg) => arg.Id == id).FirstOrDefault();
+
                 Recipes.Remove(oldRecipe);
 
                 return await Task.FromResult(true);
@@ -86,7 +89,7 @@
                 return await Task.FromResult(Recipes.FirstOrDefault(s => s.Id == id));
             }
 
-            public async Task<IEnumerable<Recipe>> GetRecipesAsync(bool forceRefresh = false)
+            public async Task<ObservableCollection<Recipe>> GetRecipesAsync(bool forceRefresh = false)
             {
                 return await Task.FromResult(Recipes);
             }

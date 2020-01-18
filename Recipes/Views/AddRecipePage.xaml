@@ -10,13 +10,15 @@
 
         <material:MaterialTextField Placeholder="Direction" ErrorText="Error Text" Text="{Binding NewDirection}" ShouldAnimateUnderline="True" AlwaysShowUnderline="True" MaxLength="500" />
 
+        <material:MaterialTextField Placeholder="Description" ErrorText="Error Text" Text="{Binding NewDescription}" ShouldAnimateUnderline="True" AlwaysShowUnderline="True" MaxLength="500" />
+
 
         <FlexLayout Direction="Row" AlignItems="Center" JustifyContent="SpaceEvenly" Margin="0,30,0,0">
 
         <!--Buttons-->
-        <material:MaterialButton BackgroundColor="#0398fc" HorizontalOptions="Center" Text="Save" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8"/>
+        <material:MaterialButton BackgroundColor="#0398fc" HorizontalOptions="Center" Text="Save" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8" Command="{Binding AddCommand}" CommandParameter="{Binding x:Type local:AddRecipePage}"/>
 
-        <material:MaterialButton BackgroundColor="#F44336" HorizontalOptions="Center" Text="Cancel" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8"/>
+        <material:MaterialButton BackgroundColor="#F44336" HorizontalOptions="Center" Text="Cancel" TextColor="Black" VerticalOptions="Center" ButtonType="Elevated" Elevation="4, 8" Clicked="MaterialButton_Clicked"/>
     </FlexLayout>
     </StackLayout>
     </ContentPage.Content>

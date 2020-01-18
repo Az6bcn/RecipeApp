@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Recipes.Commands;
 using Recipes.Models;
 
 namespace Recipes.ViewModels
@@ -7,6 +10,7 @@ namespace Recipes.ViewModels
     public class AddEditRecipeViewModel: BaseViewModel
     {
         public Recipe RecipeToEdit { get; set; }
+        public ICommand AddCommand { get; set; }
         private bool IsSuccess { get; set; }
 
         public AddEditRecipeViewModel(Recipe recipe = null)
@@ -19,6 +23,7 @@ namespace Recipes.ViewModels
                 Recipe = new Recipe();
             }
 
+            AddCommand = new AddCommand(this);
         }
 
         public Recipe Recipe
@@ -67,7 +72,7 @@ namespace Recipes.ViewModels
                 }
             }
         }
-        public string Description {
+        public string NewDescription {
             get { return Recipe.Description; }
             set
             {
@@ -92,20 +97,22 @@ namespace Recipes.ViewModels
             }
         }
 
-        public void Save(Recipe recipe)
+        public async Task<bool> Save(Recipe recipe)
         {
+            var res = await DataStore.AddRecipeAsync(recipe);
 
-
-            
+            return res;
         }
 
 
-        private List<Image> ImagesUrl => new List<Image>
+        public List<Image> Images => new List<Image>
         {
             new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557260183/tnubfv4wbkuvejlvhxms.jpg" },
                                 new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557351122/mentmlr0paozcnvw98na.jpg" },
                                 new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg" },
                                 new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg"}
         };
+
+
     }
 }

@@ -30,14 +30,14 @@ namespace Recipes.ViewModels
                 Recipes.Clear();
             }
 
-            var recipes = await DataStore.GetRecipesAsync();
-
-            foreach (var recipe in recipes)
-            {
-                Recipes.Add(recipe);
-            }
+            Recipes = await DataStore.GetRecipesAsync();
 
             IsBusy = false;
+        }
+
+        public async Task ReloadRecipes()
+        {
+            Recipes = await DataStore.GetRecipesAsync();
         }
     }
 }

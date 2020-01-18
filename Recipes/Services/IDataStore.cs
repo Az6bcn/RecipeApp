@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace Recipes.Services
@@ -10,6 +11,6 @@ namespace Recipes.Services
         Task<bool> UpdateRecipeAsync(T Recipe);
         Task<bool> DeleteRecipeAsync(Guid id);
         Task<T> GetRecipeAsync(Guid id);
-        Task<IEnumerable<T>> GetRecipesAsync(bool forceRefresh = false);
+        Task<ObservableCollection<T>> GetRecipesAsync(bool forceRefresh = false);
     }
 }
