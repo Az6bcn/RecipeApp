@@ -11,6 +11,7 @@ using Recipes.Models;
 using Recipes.Views;
 using Recipes.ViewModels;
 using XF.Material.Forms.UI.Dialogs;
+using Recipes.Commands;
 
 namespace Recipes.Views
 {
@@ -27,7 +28,13 @@ namespace Recipes.Views
             InitializeComponent();
 
 
-            BindingContext = _recipeViewModel; 
+            BindingContext = _recipeViewModel;
+
+            // subscribe to message center message sent after recipe add
+            MessagingCenter.Subscribe<DeleteCommand, string>(this, "Deleted", async (sender, message) =>
+            {
+                await MaterialDialog.Instance.SnackbarAsync(message: $"{message}", msDuration: MaterialSnackbar.DurationLong);
+            });
         }
 
         public async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -39,12 +46,13 @@ namespace Recipes.Views
             // navigate to next details page
             await Navigation.PushAsync((new RecipeDetailPage(new RecipeDetailsViewModel(selectedItem))), true);
 
-
         }
 
         public async void ToolbarItem_Clicked(Object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddRecipePage());
         }
+
+
     }
 }

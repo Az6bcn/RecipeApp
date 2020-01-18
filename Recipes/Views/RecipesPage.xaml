@@ -7,10 +7,19 @@
         <ListView x:Name="ItemsListView" ItemsSource="{Binding Recipes}"  VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadRecipesCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected" SeparatorVisibility="None" >
             <ListView.ItemTemplate>
                 <DataTemplate>
+
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Command="{Binding Source={x:Reference BrowseItemsPage}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
                         <StackLayout Padding="3">
-                            <material:MaterialCard CornerRadius="5" Elevation="1" HeightRequest="15" HorizontalOptions="Fill" >
-                                <Label Text="{Binding Name}"  LineBreakMode="NoWrap"         Style="{DynamicResource ListItemTextStyle}" FontSize="12" VerticalTextAlignment="Center"/>
+                            <material:MaterialCard CornerRadius="5" Elevation="1" HeightRequest="40" HorizontalOptions="Fill" HasShadow="True">
+                             
+                                  <StackLayout Padding="10">
+                                                
+                                        <Label Text="{Binding Name}"  LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding Description}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="13" />
+                                  </StackLayout>
                             </material:MaterialCard>
                         </StackLayout>
                     </ViewCell>

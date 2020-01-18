@@ -11,5 +11,6 @@ namespace Recipes.Models
         public string Direction { get; set; }
         public string Description { get; set; }
         public List<Image> Images { get; set; }
+        public bool IsNew { get; set; }
     }
 }

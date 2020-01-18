@@ -10,8 +10,7 @@ namespace Recipes.ViewModels
     public class AddEditRecipeViewModel: BaseViewModel
     {
         public Recipe RecipeToEdit { get; set; }
-        public ICommand AddCommand { get; set; }
-        private bool IsSuccess { get; set; }
+        public ICommand AddEditCommand { get; set; }
 
         public AddEditRecipeViewModel(Recipe recipe = null)
         {
@@ -23,7 +22,7 @@ namespace Recipes.ViewModels
                 Recipe = new Recipe();
             }
 
-            AddCommand = new AddCommand(this);
+            AddEditCommand = new AddEditCommand(this);
         }
 
         public Recipe Recipe
@@ -50,14 +49,14 @@ namespace Recipes.ViewModels
                 }
             }
         }
-        public string NewIngridents {
+        public string NewIngrident {
             get { return Recipe.Ingrident; }
             set
             {
                 if (Recipe.Ingrident != value)
                 {
                     Recipe.Ingrident = value;
-                    OnPropertyChanged(nameof(NewIngridents));
+                    OnPropertyChanged(nameof(NewIngrident));
                 }
             }
         }
@@ -84,22 +83,16 @@ namespace Recipes.ViewModels
             }
         }
 
-        public bool Response
-        {
-            get { return IsSuccess; }
-            set
-            {
-                if (IsSuccess != value)
-                {
-                    IsSuccess = value;
-                    OnPropertyChanged(nameof(Response));
-                }
-            }
-        }
-
         public async Task<bool> Save(Recipe recipe)
         {
             var res = await DataStore.AddRecipeAsync(recipe);
+
+            return res;
+        }
+
+        public async Task<bool> Update(Recipe recipe)
+        {
+            var res = await DataStore.UpdateRecipeAsync(recipe);
 
             return res;
         }
@@ -108,9 +101,9 @@ namespace Recipes.ViewModels
         public List<Image> Images => new List<Image>
         {
             new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557260183/tnubfv4wbkuvejlvhxms.jpg" },
-                                new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557351122/mentmlr0paozcnvw98na.jpg" },
-                                new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg" },
-                                new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg"}
+            new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557351122/mentmlr0paozcnvw98na.jpg" },
+            new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg" },
+            new Image { Name = "image 01", Title = "My first", Url = "https://res.cloudinary.com/az6bcn/image/upload/v1557259630/fumwapf5ks3brari5qin.jpg"}
         };
 
 

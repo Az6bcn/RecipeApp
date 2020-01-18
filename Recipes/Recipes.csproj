@@ -32,5 +32,6 @@
   <ItemGroup>
     <Compile Remove="Views\EditRecipePage.cs" />
     <Compile Remove="Views\EditRecipePage.xaml.cs" />
+    <Compile Remove="Commands\EditCommand.cs" />
   </ItemGroup>
 </Project>

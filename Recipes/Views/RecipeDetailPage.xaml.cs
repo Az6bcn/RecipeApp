@@ -27,12 +27,15 @@ namespace Recipes.Views
         {
             if (_recipeDetailsViewModel.RecipeReceived == null) return;
 
+            _recipeDetailsViewModel.RecipeReceived.IsNew = false;
+
             await Navigation.PushAsync(new
-                AddEditPage(new AddEditRecipeViewModel
+                EditPage(new AddEditRecipeViewModel
                 {
+                  
                     RecipeToEdit = _recipeDetailsViewModel.RecipeReceived
                 })
-            ); ;
+            );
         }
 
     }
